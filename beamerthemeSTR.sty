@@ -1,0 +1,118 @@
+%
+% Just a Beamer Theme I like for my presentations
+% Do whatever you want with it!
+% Written by Sebastien Tricaud
+% License: WTFPL
+
+\mode<presentation>
+
+\RequirePackage{tikz}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]
+
+
+\definecolor{red1}{RGB}{255,50,40}
+\definecolor{red2}{RGB}{232,39,25}
+\definecolor{red3}{RGB}{163,65,55}
+
+%% c1: #000000
+%% c2: #ffffff
+%% c3: #ff3228
+%% c4: #e82719
+%% c5: #a34137
+
+% Settings
+\setbeamercolor*{title page header}{fg=white}
+\setbeamercolor*{author}{fg=white}
+\setbeamercolor*{date}{fg=white}
+
+\setbeamercolor*{item}{fg=red3}
+
+\setbeamercolor{frametitle}{fg=white}
+\setbeamercolor{structure}{fg=white}
+
+\setbeamercolor{block body alerted}{bg=normal text.bg!90!black}
+\setbeamercolor{block body}{bg=normal text.bg!90!black}
+\setbeamercolor{block body example}{bg=normal text.bg!90!black}
+\setbeamercolor{block title alerted}{use={normal text,alerted text},fg=alerted text.fg!75!normal text.fg,bg=normal text.bg!75!black}
+\setbeamercolor{block title}{bg=red2}
+\setbeamercolor{block title example}{use={normal text,example text},fg=example text.fg!75!normal text.fg,bg=normal text.bg!75!black}
+\setbeamercolor{fine separation line}{}
+%% \setbeamercolor{frametitle}{fg=brown}
+\setbeamercolor{item projected}{fg=black}
+
+\setbeamercolor{normal text}{bg=red3,fg=white}
+
+
+%% \setbeamercolor{palette sidebar primary}{use=normal text,fg=normal text.fg}
+%% \setbeamercolor{palette sidebar quaternary}{use=structure,fg=structure.fg}
+%% \setbeamercolor{palette sidebar secondary}{use=structure,fg=structure.fg}
+%% \setbeamercolor{palette sidebar tertiary}{use=normal text,fg=normal text.fg}
+%% \setbeamercolor{section in sidebar}{fg=brown}
+%% \setbeamercolor{section in sidebar shaded}{fg=grey}
+\setbeamercolor{separation line}{}
+%% \setbeamercolor{sidebar}{bg=red}
+%% \setbeamercolor{sidebar}{parent=palette primary}
+%% \setbeamercolor{structure}{bg=black, fg=green}
+%% \setbeamercolor{subsection in sidebar}{fg=brown}
+%% \setbeamercolor{subsection in sidebar shaded}{fg=grey}
+%% \setbeamercolor{title}{fg=brown}
+%% \setbeamercolor{titlelike}{fg=brown}
+
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+  \useasboundingbox (0,0) rectangle(\the\paperwidth,\the\paperheight);
+  \fill[color=black] (0,0.2) rectangle (\the\paperwidth,\the\paperheight);
+  \fill[color=red1] (0,0) rectangle (\the\paperwidth,0.2);
+  \fill[color=red3] (0,0) rectangle (\the\paperwidth,0.1);
+  \ifnum\thepage>1\relax%
+  \fill[color=black] (0,0) rectangle (\the\paperwidth,\the\paperheight);
+   %% \fill[white,opacity=1] (0,0) rectangle(\the\paperwidth,\the\paperheight);
+   \fi
+  \end{tikzpicture}
+}
+
+% Title page
+\defbeamertemplate*{title page}{STR}[1][]
+{ 
+   \vskip80pt%
+    \begin{beamercolorbox}[wd=12cm,leftskip=3cm,sep=8pt,#1]{title page header}
+      \usebeamerfont{title}\inserttitle\par%
+    \end{beamercolorbox}%
+    \vskip110pt%
+    \begin{beamercolorbox}[wd=12cm,leftskip=8cm,#1]{author}
+      \usebeamerfont{author}\insertauthor%
+    \end{beamercolorbox}
+     \vskip0.2cm%
+    \begin{beamercolorbox}[wd=12cm,leftskip=8cm,#1]{date}
+      \usebeamerfont{author}\insertdate%
+    \end{beamercolorbox}
+  \vfill
+}
+
+% Items
+\setbeamertemplate{items}[square]
+\setbeamertemplate{sections/subsections in toc}[square]
+
+% Frame title
+\defbeamertemplate*{frametitle}{STR}[1][]
+{
+\vskip5pt%
+  \begin{beamercolorbox}[wd=\paperwidth]{frametitle} 
+  \begin{tikzpicture}
+  %% \useasboundingbox[fill=red2](0,0) rectangle(\the\paperwidth,2.03);
+  \fill[red2] (0,0) rectangle(\the\paperwidth,0.05);
+
+  %% \fill[blue!50!cyan!80] (3.05,0) rectangle(\the\paperwidth,1.2);
+   \ifx\insertframesubtitle\@empty%
+      {\node[anchor=west, white,font=\large] at (0.2,0.61){\insertframetitle};}
+      \else%
+      {\node[anchor= west, white,font=\large] at (0.2,0.91){\insertframetitle};%
+       \node[anchor= west, white,font=\small] at (0.2,0.41){\insertframesubtitle};}%
+      \fi
+  \end{tikzpicture}
+  \end{beamercolorbox}
+}
+
+\mode<all>
+
